@@ -26,7 +26,7 @@ int main()
             acu=acu+cali;
         }
         prom=acu/unidades;
-        printf("EL PROMEDIO DEL ALUMNO ^%d^ ES=%d ",i,prom);
+        printf("EL PROMEDIO DEL ALUMNO ^%d^ ES=%d\n ",i,prom);
         if(prom<50)
         {
             printf("///NO TIENE DERECHO A EXAMEN DE NIVELACION///\n");
