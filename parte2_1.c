@@ -11,6 +11,9 @@ a examen de nivelación) .
 */
 // R.R.D_act6_2_932
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+int validar(char mensaje[], int ri, int rf);
 int main()
 {
     int i,j, prom, cali,acu;
@@ -22,7 +25,7 @@ int main()
         printf("INGRESE LAS 5 CALIFICACIONES DE CADA UNIDAD\n");
         for(j=0;j<unidades;j++)
         {
-            scanf("%d",&cali);
+            cali=validar("",0,100);
             acu=acu+cali;
         }
         prom=acu/unidades;
@@ -32,4 +35,21 @@ int main()
             printf("///NO TIENE DERECHO A EXAMEN DE NIVELACION///\n");
         }
     }
+}
+int validar(char mensaje[], int ri, int rf)
+{
+    char calificacion[100];
+    int num;
+    do
+    {
+        printf("%s ", mensaje);
+        fflush(stdin);
+        gets(calificacion);
+        num = atoi(calificacion);
+        if (num < ri || num > rf)
+        {
+            printf("INGRESE EL NUMERO OTRA VEZ PORFAVOR\n");
+        }
+    } while (num < ri || num > rf);
+    return num;
 }
