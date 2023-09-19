@@ -11,19 +11,22 @@ calcular el promedio y basado en su promedio final, se deberá
 enviar mensaje al alumno de repetir materia, aprobado o baja temporal.
 */
 // R.R.D_act6_2_932
+
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+int validar(char mensaje[], int ri, int rf);
 int main()
 {
     int exa, acu = 0, intentos, prom, i;
     for (i = 1; i <= 3; i++)
     {
-        printf("INGRESE LA CALIFICACION DEL EXAMEN %d\n", i);
-        scanf("%d", &exa);
+
+        exa = validar("INGRESE LA CALIFICACION DEL EXAMEN\n", 0, 100);
         acu = acu + exa;
     }
     prom = acu / 3;
-    printf("CUANTOS INTENTOS LLEVAS?\n");
-    scanf("%d", &intentos);
+    intentos = validar("CUANTOS INTENTOS LLEVAS?\n", 1, 3);
     if (prom > 60 && intentos < 3)
     {
         printf("APROBASTE\n");
@@ -36,4 +39,21 @@ int main()
     {
         printf("BAJA TEMPORAL\n");
     }
+}
+int validar(char mensaje[], int ri, int rf)
+{
+    char calificacion[100];
+    int num;
+    do
+    {
+        printf("%s ", mensaje);
+        fflush(stdin);
+        gets(calificacion);
+        num = atoi(calificacion);
+        if (num < ri || num > rf)
+        {
+            printf("INGRESE EL NUMERO OTRA VEZ PORFAVOR\n");
+        }
+    } while (num < ri || num > rf);
+    return num;
 }
